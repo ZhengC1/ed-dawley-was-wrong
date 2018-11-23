@@ -18,25 +18,40 @@
                 <p class="text">Seconds</p>
             </div>
         </div>
+        <div class="row">
+            <p class="text">
+            Since Ed has been wrong 
+            </p>
+        </div>
     </div>
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
     name: 'clock',
+    methods: {
+        date: str => {
+            return (Math.trunc(Date.parse(str) / 1000));
+        }
+    },
+
+    created() {
+        axios.get(`http://google.com`)
+            .then(response => {
+                this.posts = response.data
+            })
+            .catch(e => {
+                this.errors.push(e)
+            })
+    },
 
     /* ready function will be here */
     ready() {
         window.setInterval(() => {
             this.now = Math.trunc((new Date()).getTime() / 1000);
         },1000);
-    },
-
-    props : {
-        date : {
-            type: Number,
-            coerce: str => Math.trunc(Date.parse(str) / 1000)
-        }
     },
 
     data() {
@@ -48,19 +63,19 @@ export default {
     /* Computed properties will be here */
     computed: {
         seconds() {
-            return (this.date - this.now) % 60;
+            return Math.abs(this.date("August 15, 2016") - this.now) % 60;
         },
 
         minutes() {
-            return Math.trunc((this.date - this.now) / 60) % 60;
+            return Math.abs(Math.trunc((this.date("August 15, 2016") - this.now) / 60)) % 60;
         },
 
         hours() {
-            return Math.trunc((this.date - this.now) / 60 / 60) % 24;
+            return Math.abs(Math.trunc((this.date("August 15, 2016") - this.now) / 60 / 60)) % 24;
         },
 
         days() {
-            return Math.trunc((this.date - this.now) / 60 / 60 / 24);
+            return Math.abs(Math.trunc((this.date("August 15, 2016") - this.now) / 60 / 60 / 24));
         }
     }
 }
@@ -95,13 +110,8 @@ export default {
 }
 #clock-app {
     align-items: center;
-    bottom: 0;
     background-color: #34495e;
     display: flex;
     justify-content: center;
-    left: 0;
-    position: absolute;
-    right: 0;
-    top:0;
 }
 </style>

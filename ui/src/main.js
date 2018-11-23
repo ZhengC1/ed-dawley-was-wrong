@@ -5,6 +5,13 @@ import router from './router'
 
 Vue.config.productionTip = false
 
+new Vue({
+    el: '#app',
+    router,
+    components: { App },
+    render: h => h(App)
+})
+
 Vue.filter('two_digits', function (value) {
     if(value.toString().length <= 1)
     {
@@ -13,9 +20,3 @@ Vue.filter('two_digits', function (value) {
     return value.toString();
 });
 
-new Vue({
-    el: '#app',
-    router,
-    components: { App },
-    render: h => h(App)
-})
