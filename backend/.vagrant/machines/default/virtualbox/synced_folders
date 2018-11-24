@@ -1,0 +1,1 @@
+{"virtualbox":{"/vagrant/":{"mount_options":["dmode=777","fmode=666","uid=500","gid=500"],"guestpath":"/vagrant","hostpath":"/Users/chun.zheng/Github/ed-dawley-was-wrong/backend","disabled":false,"__vagrantfile":true}}}
