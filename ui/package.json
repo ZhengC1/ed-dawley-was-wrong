@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "ajv": "^5.5.2",
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "babel-loader": "^8.0.4",
     "pug": "^2.0.3",
     "vue": "^2.5.17",
